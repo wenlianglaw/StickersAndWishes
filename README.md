@@ -1,5 +1,5 @@
 # StickersAndWishes
-A program to manage the stickers and wishes, bringing a joylife to ur gf (or bf).
+StickersAndWishes is a console program to manage the stickers and wishes, bringing a joylife to ur gf (or bf).  It's a small program that doesn't rely on any dependencies and easy to build and play with.
 
 ## How to use ##
 ### Install ###
