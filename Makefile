@@ -1,7 +1,7 @@
 INC=-I/opt/X11/include
 # LIBS=-L/usr/X11/lib -lX11  #unused
 CC=g++
-TARGET=1
+TARGET=main
 CFLAGS= -std=c++2a -Wall 
 
 OBJECTS=$(patsubst %.cpp, %.o, $(wildcard *.cpp))
