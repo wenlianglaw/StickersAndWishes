@@ -50,13 +50,21 @@ Command:  Command from keyboard.
 ## Menu ##
 
 0: Refresh wishes.
+
 1: Lookup wishes.
+
 2: Use a wish.
+
 3: Convert stickers to wish.
+
 4: Add a new wish.
+
 5: Modify a wish.
+
 +: Add stickers.
+
 -: Remove stickers.
+
 q: Exit.
 
 ## Some Notes ##
