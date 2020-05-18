@@ -82,9 +82,7 @@ void Ui::UiImpl::HandleCommandInitialUi(const Ui &ui, const std::string &cmd) {
   } else if (cmd == "4") {
     AddAWish(ui);
     RefreshUi(ui);
-  } else if (cmd == "5" || cmd == "prev") {
-    ModifyWish(ui);
-  } else if (cmd == "6" || cmd == "modify") {
+  } else if (cmd == "5") {
     ModifyWish(ui);
   } else if (cmd == "q" || cmd == "Q") {
     ExitProgram(ui);
