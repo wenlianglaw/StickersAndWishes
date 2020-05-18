@@ -1,6 +1,13 @@
 # StickersAndWishes
 A program to manage the stickers and wishes, bringing a joylife to ur gf (or bf).
 
+## How to use ##
+### Install ###
+```make```
+
+### Run ###
+```./main```
+
 ## Overview ##
 This is a program to manage stickers and wishes.   Users can add or remove any amount stickers, and exchange stickers with wishes,  for example, exchange 10 stickers with 1 wish.
 
@@ -25,7 +32,9 @@ Initial view.
 ```
 
 Stickers:   How many stickers do you have.
+
 Section 1:  Display all the current wishes.
+
 Command:  Command from keyboard.  
 
 ## Features ##
