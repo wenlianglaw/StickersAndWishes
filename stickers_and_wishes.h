@@ -45,7 +45,7 @@ private:
   std::unique_ptr<Ui> pui_;
   std::vector<WishRecord> wishes_;
 
-  int total_stickers_ = 110;
+  int total_stickers_ = 0;
   bool is_running_ = true;
 };
 
