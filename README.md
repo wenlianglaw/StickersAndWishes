@@ -9,7 +9,7 @@ StickersAndWishes is a console program to manage the stickers and wishes, bringi
 ```./main```
 
 ## Overview ##
-This is a program to manage stickers and wishes.   Users can add or remove any amount stickers, and exchange stickers with wishes,  for example, exchange 10 stickers with 1 wish.
+Users can add or remove any amount stickers, and exchange stickers with wishes,  for example, exchange 10 stickers with 1 wish.
 
 Initial view.
 ```
