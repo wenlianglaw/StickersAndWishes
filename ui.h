@@ -58,14 +58,11 @@ private:
   void ConvertStickersToWish(const Ui &ui);
   void ModifyWish(const Ui &ui);
 
-  void DisplayViewStickersUi(const Ui &ui);
-  void DisplayViewStickersMenu(const Ui &ui);
   bool InputStickerChange(const Ui &ui, int *cnt, std::string *notes);
   void AddStickers(const Ui &ui);
   void RemoveStickers(const Ui &ui);
 
   void DisplaySearchWishesUi(const Ui &ui);
-
   void SearchWishes(const Ui &ui, const std::string &search);
 
   void DisplayCommand();

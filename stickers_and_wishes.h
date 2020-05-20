@@ -26,11 +26,9 @@ public:
 
   // Loads the records from disk.
   // Loads wishes, stickers and histories.
-  void LoadFromDisk();
+  bool LoadFromDisk();
 
-  // Modify a wish.
   void ModifyWish(int no, const std::string &content, const std::string &notes);
-  // Hack: Add a wish directly without changeing the sticker num.
   void AddWish(const std::string &content, const std::string &notes);
   void RemoveAWish(int no);
 

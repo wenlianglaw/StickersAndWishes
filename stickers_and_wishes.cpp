@@ -11,9 +11,9 @@
 StickersAndWishes::StickersAndWishes() { pui_ = std::make_unique<Ui>(this); }
 
 void StickersAndWishes::Run() {
-  LoadFromDisk();
-  if (!is_running_)
+  if (!LoadFromDisk())
     return;
+    
   pui_->DisplayUi(0);
   while (is_running_) {
     auto cmd = pui_->GetCommand();
@@ -34,14 +34,14 @@ void StickersAndWishes::SaveToDisk() {
   os.close();
 }
 
-void StickersAndWishes::LoadFromDisk() {
+bool StickersAndWishes::LoadFromDisk() {
   std::cerr << "Loading data.." << std::endl;
   // Reads data.
   std::ifstream is(settings::data_path);
   if (!is) {
-    std::cerr << "unable to open file" << settings::data_path << std::endl;
-    Exit();
-    return;
+    std::ofstream out(settings::data_path);
+    out.close();
+    is.open(settings::data_path);
   }
 
   is >> total_stickers_;
@@ -75,14 +75,13 @@ void StickersAndWishes::LoadFromDisk() {
     is.ignore();
     wishes_.push_back(wish);
   }
-  // Reads history.
-  // TODO
+  return true;
 }
 
 void StickersAndWishes::ModifyWish(int no, const std::string &content,
                                    const std::string &notes) {
   if (no < 0 || no > wishes_.size()) {
-    pui_->Info(FormatString("ERROR: wish no. ", no, " out of range.", "\n"));
+    pui_->Info(FormatString("ERROR: wish no. ", no, " out of range.\n"));
     return;
   }
 
@@ -135,5 +134,6 @@ std::vector<WishRecord> StickersAndWishes::GetWishes() const { return wishes_; }
 
 void StickersAndWishes::Exit() {
   Print("Saving changes and exiting.\n");
+  SaveToDisk();
   is_running_ = false;
 }

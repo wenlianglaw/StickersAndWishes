@@ -96,9 +96,6 @@ void Ui::UiImpl::HandleCommandInitialUi(const Ui &ui, const std::string &cmd) {
 void Ui::UiImpl::ExitProgram(const Ui &ui) {
   Print("\n");
   if (PromptYesNo("Quit?")) {
-    // SaveToDisk isn't called in core's Exit() because LoadFromDisk may fail.
-    // It will call Exit(), in which case we don't want to save.
-    ui.core_->SaveToDisk();
     ui.core_->Exit();
   } else {
     RefreshUi(ui);
@@ -186,13 +183,13 @@ void Ui::UiImpl::UseAWish(const Ui &ui) {
   std::string wish_no;
   std::cin >> wish_no;
   if (wish_no == "q") {
-    DisplayUi(ui, current_ui_id_);
+    RefreshUi(ui);
     DisplayCommand();
     return;
   }
 
   if (!IsPostiveNum(wish_no)) {
-    DisplayUi(ui, current_ui_id_);
+    RefreshUi(ui);
     Info(ui, FormatString("Invalid input: ", wish_no));
     DisplayCommand();
     return;
@@ -200,7 +197,7 @@ void Ui::UiImpl::UseAWish(const Ui &ui) {
 
   int no = std::stoi(wish_no);
   if (no >= wishes_.size()) {
-    DisplayUi(ui, current_ui_id_);
+    RefreshUi(ui);
     Info(ui, FormatString("Wish No. out of boundary: ", wish_no));
     DisplayCommand();
     return;
@@ -265,7 +262,6 @@ void Ui::UiImpl::DisplayMenu(const Ui &ui, int ui_id) {
     DisplayInitialMenu(ui);
     break;
   default:
-    Info(ui, FormatString("ERROR: invalid ui_id: ", ui_id, "\n"));
     break;
   }
 }
@@ -280,6 +276,7 @@ bool Ui::UiImpl::InputStickerChange(const Ui &ui, int *cnt,
   Print("\nHow many stickers do you want to add?\n");
   std::string input;
   std::cin >> input;
+  std::cin.ignore();
   if (!IsPostiveNum(input)) {
     RefreshUi(ui);
     Info(ui, "ERROR: must be a positive number.");
@@ -287,7 +284,7 @@ bool Ui::UiImpl::InputStickerChange(const Ui &ui, int *cnt,
   }
   *cnt = std::stoi(input);
   Print("Notes: ");
-  std::cin >> *notes;
+  std::getline(std::cin, *notes);
   return true;
 }
 

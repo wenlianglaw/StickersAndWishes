@@ -11,7 +11,7 @@ constexpr int wish_summary_width = 20;
 constexpr int sticker_history_limit = 20;
 
 const constexpr char *data_path = "./data";
-const constexpr char *history_path = "./history.txt";
+const constexpr char *history_path = "./history";
 const constexpr char *log_path = "./log";
 constexpr int sticker_wish_rate = 10;
 
@@ -19,7 +19,6 @@ const char* const time_fmt = "%F %T";
 
 const std::unordered_map<int, std::string> ui_id_name = {
     {0, "Initial UI"},
-    {5, "Search Wishes"},
 };
 
 } // namespace settings
